@@ -45,16 +45,12 @@ let
     '';
   };
 
-  t2Cfg = config.hardware.apple-t2;
+  cfg = config.hardware.apple-t2;
 
 in
 {
   options = {
-    hardware.apple-t2.enableAppleSetOsLoader = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = "Whether to enable the appleSetOsLoader activation script.";
-    };
+    hardware.apple-t2.enableAppleSetOsLoader = lib.mkEnableOption "appleSetOsLoader activation script";
   };
 
   config = {
@@ -94,7 +90,7 @@ in
     powerManagement.enable = true;
 
     # Activation script to install apple-set-os-loader in order to unlock the iGPU
-    system.activationScripts.appleSetOsLoader = lib.optionalString t2Cfg.enableAppleSetOsLoader ''
+    system.activationScripts.appleSetOsLoader = lib.optionalString cfg.enableAppleSetOsLoader ''
       if [[ -e /boot/efi/efi/boot/bootx64_original.efi ]]; then
         true # It's already installed, no action required
       elif [[ -e /boot/efi/efi/boot/bootx64.efi ]]; then
@@ -112,7 +108,7 @@ in
     '';
 
     # Enable the iGPU by default if present
-    environment.etc."modprobe.d/apple-gmux.conf".text = lib.optionalString t2Cfg.enableAppleSetOsLoader ''
+    environment.etc."modprobe.d/apple-gmux.conf".text = lib.optionalString cfg.enableAppleSetOsLoader ''
       options apple-gmux force_igd=y
     '';
   };
