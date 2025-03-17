@@ -1,5 +1,5 @@
 {
-  "base_url": "https://raw.githubusercontent.com/t2linux/linux-t2-patches/dd2e78d234fc289d3ebadf1852d761498e668a02/",
+  "base_url": "https://raw.githubusercontent.com/t2linux/linux-t2-patches/4289a443f6247965bcd16319f7bed103275abaab/",
   "patches": [
     {
       "name": "1001-Add-apple-bce-driver.patch",
@@ -103,7 +103,7 @@
     },
     {
       "name": "4004-HID-magicmouse-Add-support-for-trackpads-found-on-T2.patch",
-      "hash": "sha256-pmGR0JdMMwGWG3zwMwMBuSyzltLvvzjTgfi1Ii1cglk="
+      "hash": "sha256-9SzFovb562uqg4gNdddaxusK0XwfMM0p4VNuvDEuzA4="
     },
     {
       "name": "7001-drm-i915-fbdev-Discard-BIOS-framebuffers-exceeding-h.patch",
